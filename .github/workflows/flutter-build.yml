@@ -12,10 +12,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Flutter
+      - name: Setup Flutter (master channel)
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.1' # ✅ This supports Dart 3.8.1
+          flutter-version: 'master'
+          channel: 'master'  # ✅ Enables Dart 3.8.1 support
 
       - name: Flutter Pub Get
         run: flutter pub get
@@ -24,7 +25,7 @@ jobs:
         run: flutter build apk --release --no-shrink
 
       - name: Upload APK
-        uses: actions/upload-artifact@v4 # ✅ Updated to v4 to fix deprecation error
+        uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
           path: build/app/outputs/flutter-apk/app-release.apk
