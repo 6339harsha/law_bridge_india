@@ -15,7 +15,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.1'  # Updated to match Dart 3.8.1
+          flutter-version: '3.22.1' # ✅ This supports Dart 3.8.1
 
       - name: Flutter Pub Get
         run: flutter pub get
@@ -24,7 +24,7 @@ jobs:
         run: flutter build apk --release --no-shrink
 
       - name: Upload APK
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4 # ✅ Updated to v4 to fix deprecation error
         with:
           name: app-release.apk
           path: build/app/outputs/flutter-apk/app-release.apk
